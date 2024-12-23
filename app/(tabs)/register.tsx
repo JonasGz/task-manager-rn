@@ -1,21 +1,18 @@
-import React, { useState } from "react";
+import { ButtonGroup, ButtonText, Button } from "@/components/ui/button";
+import { Input, InputField, InputSlot, InputIcon } from "@/components/ui/input";
+import { logOut, signIn, signUp } from "@/services/firebase-service";
 import {
   ContainerScreen,
-  TitleContainer,
   FormContainer,
-} from "../../styles/auth-screen/style";
-import { Input, InputField, InputSlot, InputIcon } from "@/components/ui/input";
-import { Button, ButtonText, ButtonGroup } from "@/components/ui/button";
+  TitleContainer,
+} from "@/styles/auth-screen/style";
+import { router } from "expo-router";
 import { Home } from "lucide-react-native";
-import { signIn, signUp } from "@/services/firebase-service";
-import { useRouter } from "expo-router";
-import { useTheme } from "@emotion/react";
+import React, { useState } from "react";
 
-export default function HomeScreen() {
-  const router = useRouter();
+export default function RegisterScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const theme = useTheme();
 
   const handleChangeEmail = (text: string) => {
     setEmail(text);
@@ -27,17 +24,22 @@ export default function HomeScreen() {
   return (
     <ContainerScreen>
       <TitleContainer>
-        <Home color={theme.colors.text} /> Welcome!
+        <Home color="#000" /> Welcome!
       </TitleContainer>
       <FormContainer>
         <Input style={{ width: "60%" }}>
-          <InputField onChangeText={handleChangeEmail} placeholder="Email" />
+          <InputField
+            type="text"
+            onChangeText={handleChangeEmail}
+            placeholder="Email"
+          />
           <InputSlot>
             <InputIcon>{}</InputIcon>
           </InputSlot>
         </Input>
         <Input style={{ width: "60%" }}>
           <InputField
+            type="password"
             onChangeText={handleChangePassword}
             placeholder="Password"
           />
@@ -47,14 +49,11 @@ export default function HomeScreen() {
         </Input>
 
         <ButtonGroup>
-          <Button onPress={() => signIn({ email, password, router })}>
-            <ButtonText>Sign in</ButtonText>
-          </Button>
-          <Button
-            action="secondary"
-            onPress={() => router.push("/(tabs)/register")}
-          >
+          <Button onPress={() => signUp({ email, password, router })}>
             <ButtonText>Register</ButtonText>
+          </Button>
+          <Button action="secondary" onPress={() => router.push("/(tabs)")}>
+            <ButtonText>Sign in</ButtonText>
           </Button>
         </ButtonGroup>
       </FormContainer>
