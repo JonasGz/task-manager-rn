@@ -27,25 +27,19 @@ export default function RegisterScreen() {
         <Home color="#000" /> Welcome!
       </TitleContainer>
       <FormContainer>
-        <Input style={{ width: "60%" }}>
+        <Input style={{ width: "60%", height: 40 }}>
           <InputField
             type="text"
             onChangeText={handleChangeEmail}
             placeholder="Email"
           />
-          <InputSlot>
-            <InputIcon>{}</InputIcon>
-          </InputSlot>
         </Input>
-        <Input style={{ width: "60%" }}>
+        <Input style={{ width: "60%", height: 40 }}>
           <InputField
             type="password"
             onChangeText={handleChangePassword}
             placeholder="Password"
           />
-          <InputSlot>
-            <InputIcon>{/* Some Icon Component */}</InputIcon>
-          </InputSlot>
         </Input>
 
         <ButtonGroup>

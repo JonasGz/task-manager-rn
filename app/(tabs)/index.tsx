@@ -30,20 +30,14 @@ export default function HomeScreen() {
         <Home color={theme.colors.text} /> Welcome!
       </TitleContainer>
       <FormContainer>
-        <Input style={{ width: "60%" }}>
+        <Input style={{ width: "60%", height: 40 }}>
           <InputField onChangeText={handleChangeEmail} placeholder="Email" />
-          <InputSlot>
-            <InputIcon>{}</InputIcon>
-          </InputSlot>
         </Input>
-        <Input style={{ width: "60%" }}>
+        <Input style={{ width: "60%", height: 40 }}>
           <InputField
             onChangeText={handleChangePassword}
             placeholder="Password"
           />
-          <InputSlot>
-            <InputIcon>{/* Some Icon Component */}</InputIcon>
-          </InputSlot>
         </Input>
 
         <ButtonGroup>

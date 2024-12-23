@@ -7,8 +7,7 @@ export const Container = styled.View`
   height: 100%;
   background-color: ${(props) => props.theme.colors.background};
   color: ${(props) => props.theme.colors.text};
-  padding: 10px;
-  margin-top: 80px;
+  padding-top: 100px;
 `;
 
 export const FormContainer = styled.View`

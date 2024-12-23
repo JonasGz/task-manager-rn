@@ -14,7 +14,7 @@ import { List } from "react-native-paper";
 
 export default function TaskScreen() {
   const [taskName, setTaskName] = useState("");
-  const { colors } = useTheme();
+  const theme = useTheme();
 
   const tasks = useContext(TaskContext);
   const dispatch = useContext(TasksDispatchContext);
@@ -29,7 +29,7 @@ export default function TaskScreen() {
   return (
     <Container>
       <FormContainer>
-        <Input style={{ width: "60%" }}>
+        <Input style={{ width: "60%", height: 40 }}>
           <InputField
             type="text"
             onChangeText={handleChangeName}
@@ -40,9 +40,12 @@ export default function TaskScreen() {
           </InputSlot>
         </Input>
 
-        <Button onPress={() => handleAdd(taskName)}>
+        <Button
+          style={{ backgroundColor: theme.dark == true ? "#eee" : "" }}
+          onPress={() => handleAdd(taskName)}
+        >
           <ButtonText>
-            <Plus color="#fff" />
+            <Plus color={theme.dark == true ? "#000" : "#fff"} />
           </ButtonText>
         </Button>
       </FormContainer>
@@ -60,7 +63,7 @@ export default function TaskScreen() {
           <ContainerItem key={task.id}>
             <List.Item
               titleStyle={{
-                color: colors.text,
+                color: theme.colors.text,
                 fontWeight: "bold",
               }}
               borderless={true}
